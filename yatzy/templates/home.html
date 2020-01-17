@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="container-fluid pt-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <p> A simple creation of the scandinavian version of Yatzy. Start a new game by pressing the 'New Game!' button.
+                When game is over, a current score list and a insert button will appear. Current scores can be stored to database
+                by pressing the 'Insert Scores!' button.
+            </p>
+            <a href="https://en.wikipedia.org/wiki/Yatzy" class="btn btn-dark btn-sm btn-block" role="button">Rules!</a>
+            <a href="{% url 'play' %}" class="btn btn-dark btn-sm btn-block" role="button">Play Game!</a>
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item py-1 text-center font-weight-bold"> Alltime Scores </li>
+                {% for score in scores %}
+                <li class="list-group-item py-1 text-center"> {{ score.result }} </li>
+                {% endfor %}
+            </ul>
+
+            {% load static %}
+            <link rel="stylesheet" type="text/css" href='{% static "bootstrap.min.css" %}'>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

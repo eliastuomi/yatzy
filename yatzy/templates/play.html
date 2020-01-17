@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid pt-3">
+    <div class="row">
+        <div class="col-sm-2">
+
+            <div class="card table-responsive">
+                <table class="table-bordered table-hover" id="tables">
+                    <tr>
+                        <th class="text-center">Throws Left</th>
+                        <td id="left" class="text-center">2</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Select</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Ones</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="ones"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Twos</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="twos"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Threes</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="threes"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Fours</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="fours"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Fives</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="fives"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Sixes</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="sixes"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Bonus</th>
+                        <td id="bonus" class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Pair</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="pair"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Two Pairs</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="twopairs"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Three of a Kind</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="threeofkind"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Four of a Kind</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="fourofkind"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Small Straight</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="smallstraight"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Big Straight</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="bigstraight"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Full House</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="fullhouse"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Chance</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="chance"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Yatzy</th>
+                        <td><input type="button" class="btn btn-dark btn-sm btn-block" value=0 id="yatzy"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Score</th>
+                        <td id="sum" class="text-center">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+
+
+            <input type="checkbox" name="checkbox0" id="checkbox0" value="1">
+            <label for="checkbox0" id="boxlabel0"></label><br>
+            <input type="checkbox" name="checkbox1" id="checkbox1" value="1">
+            <label for="checkbox1" id="boxlabel1"></label><br>
+            <input type="checkbox" name="checkbox2" id="checkbox2" value="1">
+            <label for="checkbox2" id="boxlabel2"></label><br>
+            <input type="checkbox" name="checkbox3" id="checkbox3" value="1">
+            <label for="checkbox3" id="boxlabel3"></label><br>
+            <input type="checkbox" name="checkbox4" id="checkbox4" value="1">
+            <label for="checkbox4" id="boxlabel4"></label>
+
+
+            <input type="button" id="roll" class="btn btn-dark btn-sm btn-block" value="Roll!">
+            <input type="button" id="newgame" class="btn btn-dark btn-sm btn-block" value="New Game!">
+
+            <a href="{% url 'home' %}" class="btn btn-dark btn-sm btn-block" role="button">Home!</a>
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item py-1 text-center font-weight-bold"> Alltime Scores </li>
+                {% for score in scores %}
+                <li class="list-group-item py-1 text-center"> {{ score.result }} </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-sm-2">
+            <input type="button" id="insert" class="btn btn-dark btn-sm btn-block" value="Insert Scores!" hidden=false>
+            <br>
+            <ul id="currentlist" class="list-group" hidden=true>
+                <li class="list-group-item py-1 text-center font-weight-bold"> Current Scores </li>
+            </ul>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+{% load static %}
+<script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'game.js' %}"></script>
+<link rel="stylesheet" type="text/css" href='{% static "bootstrap.min.css" %}'>
+<link rel="stylesheet" type="text/css" href='{% static "styles.css" %}'>
+
+{% endblock %}
