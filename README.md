@@ -1,6 +1,6 @@
 # Yatzy
 
-A simple yatzy game made with JavaScript, using Django web framework.
+A simple website for yatzy game made with JavaScript, using Django web framework.
 
 
 <img src="docs/example1.png" width="300">
